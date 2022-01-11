@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <meta charset="utf-8" />
+       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+       <title></title>
+       <meta name="description" content="" />
+       <meta name="viewport" content="width=device-width, initial-scale=1" />
+       <link rel="stylesheet" href="" />
+       <script>
+           function reverseString(str) {
+               let newStr = '';
+               for(let i = str.length - 1; i >= 0; i--) {
+                   newStr += str[i];
+               }
+               return newStr;
+           }
+           function showInput(e) {
+               e.preventDefault();
+               const inputStr = document.getElementById('user_input').value;
+               if(inputStr.length < 1) {
+                   alert("Must enter a string to reverse. Try again.")
+               }
+               let reversed = reverseString(inputStr);
+ 
+               document.getElementById(
+                   'display'
+               ).innerHTML = reversed;
+               document.getElementById('user_input').value = '';
+           }
+       </script>
+       <style>
+           * {
+               box-sizing: border-box;;
+           }
+           body {
+               width: 100%;
+               max-width: 500px;
+               height: 100vh;
+               background: black;
+               margin: 0 auto;
+               display: flex;
+               flex-flow: column wrap;
+               align-items: center;
+               justify-content: center;
+           }
+           div {
+               display: flex;
+               flex-flow: column wrap;
+               align-items: flex-start;
+               width: 100%;
+           }
+           form {
+               display: flex;
+               flex-flow: column wrap;
+               width: 100%;
+               background: lightgray;
+               padding: 20px;
+               border: 5px double slategray;
+ 
+ 
+           }
+           #user_input {
+               width: 100%;
+           }
+           #submit_button {
+               width: 25%;
+               align-self: flex-end;
+               margin-top: 10px;
+           }
+           #display {
+               font-size: 1.4rem;
+               height: 50px;
+           }
+       </style>
+   </head>
+   <body>
+       <div>
+           <form onsubmit="showInput(event);">
+               <label id="label">Enter a String to Reverse:</label>
+               <input type="text" name="message" id="user_input"/>
+               <input type="submit" onclick="showInput(event);" id="submit_button"/><br />
+               <label>Reversed string: </label>
+               <p><span id="display"></span></p>
+           </form>
+          
+          
+       </div>
+   </body>
+</html>
